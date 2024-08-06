@@ -29,7 +29,12 @@ class MetadataManager:
     def get_metadata(self, key):
         # Retrieve metadata for a given key
         return self.metadata.get(key, None)
-
+    def get_key_metadata(self, bucket, key):
+        return self.metadata["server"]["buckets"].get(bucket, {}).get("objects", {}).get(key, None)
+    
+    def get_bucket_metadata(self, bucket):
+        return self.metadata["server"]["buckets"].get(bucket, None)
+    
     def get_versions(self, key):
         # Retrieve versions for a given key
         metadata = self.get_metadata(key)

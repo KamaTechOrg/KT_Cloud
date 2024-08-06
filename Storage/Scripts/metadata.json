@@ -1,95 +1,170 @@
 {
-    "C:/Users/shana/Desktop/ניסיון חדש/file.txt": {
-        "versions": {
-            "123": {
-                "LegalHold": {
-                    "Status": "ON"
-                },
-                "acl": {
-                    "owner": "user1",
-                    "permissions": {
-                        "read": [
-                            "user1",
-                            "user2"
-                        ],
-                        "write": [
-                            "user1"
-                        ]
+    "server": {
+        "buckets": {
+            "bucket1": {
+                "objectLock": {
+                    "objectLockEnabled": "GOVERNANCE",
+                    "lockConfiguration": {
+                        "mode": "GOVERNANCE",
+                        "retainUntilDate": "2025-08-05T12:00:00Z"
                     }
                 },
-                "TagSet": [
-                    {
-                        "Key": "Key1",
-                        "Value": "Value1"
+                "objects": {
+                    "object1.txt": {
+                        "versions": {
+                            "1": {
+                                "etag": "etag1",
+                                "size": 1024,
+                                "lastModified": "2023-07-01T12:00:00Z",
+                                "isLatest": false,
+                                "acl": {
+                                    "owner": "user1",
+                                    "permissions": [
+                                        "READ",
+                                        "WRITE"
+                                    ]
+                                },
+                                "LegalHold": {
+                                    "Status": "ON"
+                                },
+                                "Retention": {
+                                    "Mode": "COMPLIANCE",
+                                    "RetainUntilDate": "2024-07-01T12:00:00Z"
+                                },
+                                "tagSet": [
+                                    {
+                                        "key": "Key1",
+                                        "value": "Value1"
+                                    },
+                                    {
+                                        "key": "Key2",
+                                        "value": "Value2"
+                                    }
+                                ],
+                                "contentLength": 36,
+                                "contentType": "text/plain",
+                                "metadata": {
+                                    "custom-metadata": "value"
+                                }
+                            },
+                            "2": {
+                                "etag": "etag2",
+                                "size": 2048,
+                                "lastModified": "2023-08-01T12:00:00Z",
+                                "isLatest": true,
+                                "acl": {
+                                    "owner": "user1",
+                                    "permissions": [
+                                        "READ"
+                                    ]
+                                },
+                                "LegalHold": {
+                                    "Status": "ON"
+                                },
+                                "Retention": {
+                                    "Mode": "COMPLIANCE",
+                                    "RetainUntilDate": "2022-12-31T23:59:59Z"
+                                },
+                                "tagSet": [
+                                    {
+                                        "key": "Key1",
+                                        "value": "Value1"
+                                    },
+                                    {
+                                        "key": "Key2",
+                                        "value": "Value2"
+                                    }
+                                ],
+                                "contentLength": 36,
+                                "contentType": "text/plain",
+                                "metadata": {
+                                    "custom-metadata": "value"
+                                }
+                            }
+                        }
                     },
-                    {
-                        "Key": "Key2",
-                        "Value": "Value2"
-                    }
-                ],
-                "ObjectLockConfiguration": {
-                    "ObjectLockEnabled": "Enabled",
-                    "Rule": {
-                        "DefaultRetention": {
-                            "Mode": "GOVERNANCE",
-                            "Days": 30
+                    "object2.jpg": {
+                        "versions": {
+                            "1": {
+                                "etag": "etag3",
+                                "size": 5120,
+                                "lastModified": "2023-06-01T12:00:00Z",
+                                "isLatest": true,
+                                "acl": {
+                                    "owner": "user2",
+                                    "permissions": [
+                                        "READ"
+                                    ]
+                                },
+                                "LegalHold": {
+                                    "Status": "ON"
+                                },
+                                "Retention": {
+                                    "Mode": "NONE",
+                                    "RetainUntilDate": null
+                                },
+                                "tagSet": [
+                                    {
+                                        "key": "Key1",
+                                        "value": "Value1"
+                                    },
+                                    {
+                                        "key": "Key2",
+                                        "value": "Value2"
+                                    }
+                                ],
+                                "contentLength": 36,
+                                "contentType": "text/plain",
+                                "metadata": {
+                                    "custom-metadata": "value"
+                                }
+                            }
                         }
                     }
-                },
-                "LastModified": "2024-07-31T12:00:00Z",
-                "ContentLength": 1024,
-                "ETag": "1234567890abcdef",
-                "ContentType": "text/plain",
-                "Metadata": {},
-                "checksum": "abc124",
-                "ObjectParts": "None",
-                "ObjectSize": 67890,
-                "StorageClass": "STANDARD"
+                }
             },
-            "12554": {
-                "LegalHold": {
-                    "Status": "ON"
-                },
-                "acl": {
-                    "owner": "user1",
-                    "permissions": {
-                        "read": [
-                            "user1",
-                            "user2"
-                        ],
-                        "write": [
-                            "user1"
-                        ]
-                    }
-                },
-                "TagSet": [
-                    {
-                        "Key": "Key1",
-                        "Value": "Value1"
-                    },
-                    {
-                        "Key": "Key2",
-                        "Value": "Value2"
-                    }
-                ],
-                "ObjectLockConfiguration": {
-                    "ObjectLockEnabled": "Disabled",
-                    "Rule": {
-                        "DefaultRetention": {
-                            "Mode": "COMPLIANCE",
-                            "Days": 60
+            "bucket2": {
+                "objects": {
+                    "object3.pdf": {
+                        "versions": {
+                            "1": {
+                                "etag": "etag4",
+                                "size": 3072,
+                                "lastModified": "2023-05-01T12:00:00Z",
+                                "isLatest": true,
+                                "acl": {
+                                    "owner": "user3",
+                                    "permissions": [
+                                        "READ",
+                                        "WRITE"
+                                    ]
+                                },
+                                "LegalHold": {
+                                    "Status": "ON"
+                                },
+                                "Retention": {
+                                    "Mode": "GOVERNANCE",
+                                    "RetainUntilDate": "2024-05-01T12:00:00Z"
+                                },
+                                "tagSet": [
+                                    {
+                                        "key": "Key1",
+                                        "value": "Value1"
+                                    },
+                                    {
+                                        "key": "Key2",
+                                        "value": "Value2"
+                                    }
+                                ],
+                                "contentLength": 36,
+                                "contentType": "text/plain",
+                                "metadata": {
+                                    "custom-metadata": "value"
+                                }
+                            }
                         }
                     }
-                },
-                "LastModified": "2024-07-25T09:00:00Z",
-                "ContentLength": 2048,
-                "ETag": "abcdef1234567890",
-                "ContentType": "application/octet-stream",
-                "Metadata": {},
-                "checksum": "abc124",
-                "ObjectParts": "None",
-                "ObjectSize": 67890,
-                "StorageClass": "STANDARD"
+                }
             }
         }
     }
