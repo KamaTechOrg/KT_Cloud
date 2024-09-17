@@ -47,14 +47,14 @@ class DBSubnetGroup:
         self.pk_value = self.db_subnet_group_name
         
     def to_dict(self) -> Dict[str, Any]:
-        return ObjectManager.convert_object_attributes_to_dictionary(
-            db_subnet_group_name=self.db_subnet_group_name,
-            db_subnet_group_description = self.db_subnet_group_description,
-            vpc_id = self.vpc_id,
-            subnets = self.subnets,
-            db_subnet_group_arn = self.db_subnet_group_arn,
-            status = self.status
-        )
+        return {
+            'db_subnet_group_name':self.db_subnet_group_name,
+            'db_subnet_group_description': self.db_subnet_group_description,
+            'vpc_id': self.vpc_id,
+            'subnets': self.subnets,
+            'db_subnet_group_arn': self.db_subnet_group_arn,
+            'status': self.status
+        }
 
     def to_bytes(self):
         bytes = json.dumps(self.to_dict())
