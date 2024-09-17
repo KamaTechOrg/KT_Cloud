@@ -29,7 +29,7 @@ def clear_table():
     cursor = conn.cursor()
 
     # Clear the table if it exists
-    table_name = "db_subnet_groups"
+    table_name = "mng_DBSubnetGroups"
     cursor.execute(f"DELETE FROM {table_name};")
 
     # Commit changes and close the connection

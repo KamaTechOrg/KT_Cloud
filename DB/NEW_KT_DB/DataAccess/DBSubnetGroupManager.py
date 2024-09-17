@@ -14,15 +14,14 @@ class DBSubnetGroupManager:
         self.object_manager.create_management_table(DBSubnetGroup.table_name, DBSubnetGroup.table_structure)
 
     def create(self, subnet_group: DBSubnetGroup):
-        self.object_manager.insert_object_to_management_table(DBSubnetGroup.table_name, subnet_group.to_sql())
+        self.object_manager.save_in_memory(DBSubnetGroup.table_name, subnet_group.to_sql())
 
     def get(self, name: str):
-        data = self.object_manager.get_from_memory(pk_col = DBSubnetGroup.pk_column, table_name = DBSubnetGroup.table_name, object_id = name)
+        data = self.object_manager.get_from_memory(DBSubnetGroup.table_name, criteria = f'{DBSubnetGroup.pk_column} = \'{name}\'')
+        
         if data:
-            data_mapping = {'db_subnet_group_name':name}
-            for key, value in data[name].items():
-                data_mapping[key] = value 
-            return DBSubnetGroup(**data_mapping)
+            print(data)
+            return DBSubnetGroup(*data[0])
         else:
             raise ValueError(f"subnet group with name '{name}' not found")
 
