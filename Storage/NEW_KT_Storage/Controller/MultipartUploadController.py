@@ -30,5 +30,4 @@ class MultipartUploadController:
         Completes the upload process and merges all parts into a single file.
         """
         return self.service.complete_upload(upload_id, bucket_name, object_key)
-    
-
+ 
