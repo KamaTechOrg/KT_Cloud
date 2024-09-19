@@ -58,7 +58,7 @@ class ParameterGroupService(DBO):
         data = self.dal_cluster.get_all_objects()
         clusters = list(data.values())
         for c in clusters:
-            if c['db_cluster_parameter_group_name'] == group_name:
+            if c['group_name'] == group_name:
                 raise ValueError("Can't delete parameter group associated with any DB clusters")
         self.dal.delete(group_name)
         print(f"Deleting parameter group '{group_name}'")
