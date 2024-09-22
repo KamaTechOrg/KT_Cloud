@@ -2,7 +2,7 @@ from typing import Dict, Any, Optional
 import json
 import sqlite3
 
-from DB.NEW_KT_DB.DataAccess.DBManager import DBManager
+from NEW_KT_DB.DataAccess.DBManager import DBManager
  
 class ObjectManager:
     def __init__(self, db_file: str):
@@ -11,14 +11,12 @@ class ObjectManager:
 
 
     def create_management_table(self, object_name, table_structure='default', pk_column_data_type='INTEGER'):
-
         table_name = self._convert_object_name_to_management_table_name(object_name)
         pk_constraint = ' AUTOINCREMENT' if pk_column_data_type == 'INTEGER' else ''
 
         if table_structure == 'default':
             table_structure = f'object_id {pk_column_data_type} PRIMARY KEY {pk_constraint},type_object TEXT NOT NULL,metadata TEXT NOT NULL'
         self.db_manager.create_table(table_name, table_structure)
-
 
     def _insert_object_to_management_table(self, table_name, object_info, columns_to_populate=None):
 
@@ -108,3 +106,14 @@ class ObjectManager:
         for key, value in kwargs.items():
             dict[key] = value
         return dict
+
+    def is_exists(self, object):
+        table_name = self._convert_object_name_to_management_table_name(object.object_name)
+        try:
+            query=f'select * from {table_name} where {object.pk_column} = {object.pk_value}'
+            result=self.db_manager.execute_query_with_single_result(query)
+            if result is None:
+                return False
+            return True 
+        except sqlite3.OperationalError as e:
+            return False 
