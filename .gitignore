@@ -2,11 +2,11 @@
 .pytest_cache/
 .idea/
 .vscode/
-*.db
+# *.db
 ".idea/workspace.xml" 
-*.pyc
+# *.pyc
 *.env
 *.csv
 */__pycache__/
-**/__pycache__/
+# **/__pycache__/
 !mainDB.db

@@ -57,6 +57,19 @@
 # 10. **Set Event Notifications** → 
 # 11. **Encrypt the Object**
 
+def print_message(message: str, mode: str = None):
+    """Print the message in a specific color based on the mode."""
+    
+    if mode == 'system_info':
+        # Print message in yellow
+        print(colored(message, 'yellow'))
+    elif mode == 'action':
+        # Print message in orange
+        print(colored(message, 'light_red'))
+    else:
+        # Print message in default color
+        print(message)
+
 
 print'''---------------------Start Of session----------------------'''
 print(current_date_time)

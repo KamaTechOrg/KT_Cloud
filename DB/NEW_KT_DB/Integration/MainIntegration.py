@@ -58,30 +58,46 @@
 # 10. **Create Snapshot** → 
 # 11. **Create Replica**
 
+from termcolor import colored
 
-print'''---------------------Start Of session----------------------'''
-print(current_date_time)
+
+def print_message(message: str, mode: str = None):
+    """Print the message in a specific color based on the mode."""
+    
+    if mode == 'system_info':
+        # Print message in yellow
+        print(colored(message, 'yellow'))
+    elif mode == 'action':
+        # Print message in orange
+        print(colored(message, 'light_red'))
+    else:
+        # Print message in default color
+        print(message)
+
+
+print_message('''---------------------Start Of session----------------------''', 'system_info')
+print_message(current_date_time)
 
 # object 1
-print('''{current_date_time} deonstration of object XXX start''')
+print_message('''{current_date_time} deonstration of object XXX start''', 'system_info')
 
 # create
-print('''{current_date_time} going to create db cluster names "example"''')
+print_message('''{current_date_time} going to create db cluster names "example"''', 'action')
 clusterController.create('example')
-print('''{current_date_time} cluster "example" created successfully''')
-print(total_duration)
+print_message('''{current_date_time} cluster "example" created successfully''', 'system_info')
+print_message(total_duration)
 
 # delete
-print('''{current_date_time} going to delete db cluster "example"''')
+print_message('''{current_date_time} going to delete db cluster "example"''', 'action')
 clusterController.delete('example')
-print('{current_date_time} verify db cluster "example" deleted by checking if it exist')
+print_message('{current_date_time} verify db cluster "example" deleted by checking if it exist', 'action')
 clusterTest.verify_deletion('example')
-print('''{current_date_time} cluster "example" deleted successfully''')
-print(total_duration)
+print_message('''{current_date_time} cluster "example" deleted successfully''', 'system_info')
+print_message(total_duration, 'system_info')
 
-print('''{current_date_time} deonstration of object XXX ended successfully''')
-print(total_duration)
+print_message('''{current_date_time} deonstration of object XXX ended successfully''', 'system_info')
+print_message(total_duration, 'system_info')
 
-print(current_date_time)
-print'''---------------------End Of session----------------------'''
-print(total_duration)
+print_message(current_date_time, 'system_info')
+print_message('''---------------------End Of session----------------------''', 'system_info')
+print_message(total_duration, 'system_info')
